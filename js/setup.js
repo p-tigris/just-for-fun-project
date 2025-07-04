@@ -18,6 +18,18 @@ disneyButtonEl.textContent = "Guess the Disney Lyrics";
 // Containers to hold the above images and buttons
 export const imageContainerEl = document.createElement('div');
 export const buttonContainerEl = document.createElement('div');
+imageContainerEl.style.display = "flex";
+imageContainerEl.style.gap = "2em";
+buttonContainerEl.style.display = "flex";
+buttonContainerEl.style.justifyContent = "space-around";
+buttonContainerEl.style.marginTop = "1em";
+
+// Image for each quiz question
+export const quizImageEl = document.createElement('img');
+quizImageEl.alt = "Quiz image";
+quizImageEl.height = 400;
+quizImageEl.width = 500;
+quizImageEl.style.display = "flex";
 
 // Choice buttons for each quiz question
 export const choiceButtonsEl = document.createElement('div');
@@ -27,6 +39,9 @@ choiceButtonsEl.style.alignItems = "center";
 choiceButtonsEl.style.gridTemplateColumns = "repeat(2, 200px)";
 choiceButtonsEl.style.gap = "10px";
 choiceButtonsEl.style.marginTop = "20px";
+
+// Final message at the end of the quiz
+export const finalMessageEl = document.createElement('h2');
 
 // Reset button for end of quiz
 export const resetButtonEl = document.createElement('button');

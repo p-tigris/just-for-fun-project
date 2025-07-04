@@ -1,62 +1,62 @@
 import { animeQuestions, disneyQuestions } from "./data.js";
-import { animeImageEl, animeButtonEl, disneyImageEl, disneyButtonEl, imageContainerEl, buttonContainerEl, choiceButtonsEl, resetButtonEl } from "./setup.js";
+import { animeImageEl, animeButtonEl, disneyImageEl, disneyButtonEl, 
+    imageContainerEl, buttonContainerEl, quizImageEl, choiceButtonsEl, 
+    finalMessageEl, resetButtonEl } from "./setup.js";
 
 let score;
 let currentQuestionIndex;
+let quizQuestions;
 
 const quizContainer = document.querySelector('#quiz-container');
 const messageEl = document.querySelector('#message');
 
 
-const init = () => {
-    quizContainer.innerHTML = "";
-    quizContainer.appendChild(imageContainerEl);
-    quizContainer.appendChild(buttonContainerEl);
-    messageEl.textContent = "Choose your quiz!";
+const home = () => {
     score = 0;
     currentQuestionIndex = 0;
+    quizContainer.innerHTML = "";
+    messageEl.textContent = "Choose your quiz!";
+    quizContainer.appendChild(imageContainerEl);
+    quizContainer.appendChild(buttonContainerEl);
     imageContainerEl.appendChild(animeImageEl);
     imageContainerEl.appendChild(disneyImageEl);
     buttonContainerEl.appendChild(animeButtonEl);
     buttonContainerEl.appendChild(disneyButtonEl);
-    imageContainerEl.style.display = "flex";
-    imageContainerEl.style.gap = "2em";
-    buttonContainerEl.style.display = "flex";
-    buttonContainerEl.style.justifyContent = "space-around";
-    buttonContainerEl.style.marginTop = "1em";
 }
 
-document.addEventListener('DOMContentLoaded', init)
+const startQuiz = (event) => {
+    if (event.target.textContent === "Guess the Anime") {
+        quizQuestions = animeQuestions;
+    } else if (event.target.textContent === "Guess the Disney Lyrics") {
+        quizQuestions = disneyQuestions;
+    }
+    render();
+}
     
 const render = () => {
+    messageEl.textContent = quizQuestions[currentQuestionIndex].question;
     quizContainer.innerHTML = "";
-    messageEl.textContent = "What anime is this?"
-    const quizImage = document.createElement('img');
-    quizImage.src = animeQuestions[currentQuestionIndex].image;
-    quizImage.alt = "Anime image";
-    quizImage.height = 400;
-    quizImage.width = 500;
-    quizContainer.appendChild(quizImage);
-    quizImage.style.display = "flex";
+    quizImageEl.src = quizQuestions[currentQuestionIndex].image;
+    quizContainer.appendChild(quizImageEl);
     choiceButtonsEl.innerHTML = "";
     quizContainer.appendChild(choiceButtonsEl);
-    animeQuestions[currentQuestionIndex].choices.forEach((choice) => {
+    quizQuestions[currentQuestionIndex].choices.forEach((choice) => {
         const choiceButton = document.createElement('button');
         choiceButton.textContent = choice;
         choiceButtonsEl.appendChild(choiceButton);
-        choiceButton.addEventListener('click', checkAnswer)
-        choiceButton.addEventListener('click', next)
+        choiceButtonsEl.addEventListener('click', checkAnswer)
     })
 }
 
 const checkAnswer = (event) => {
     quizContainer.innerHTML = "";
-    if (event.target.textContent === animeQuestions[currentQuestionIndex].answer) {
+    if (event.target.textContent === quizQuestions[currentQuestionIndex].answer) {
         messageEl.textContent = "✅ That is correct!";
         score++;
     } else {
         messageEl.textContent = "❌ Sorry, that is incorrect."
     }
+    next();
 }
 
 const next = () => {
@@ -66,7 +66,7 @@ const next = () => {
     nextButtonEl.addEventListener('click', () => {
         currentQuestionIndex++;
         nextButtonEl.remove();
-        if (currentQuestionIndex < animeQuestions.length) {
+        if (currentQuestionIndex < quizQuestions.length) {
             render();
         } else {
             messageEl.textContent = `Your final score is ${score} out of ${animeQuestions.length}`;
@@ -77,7 +77,6 @@ const next = () => {
 }
 
 const finalMessage = () => {
-    const finalMessageEl = document.createElement('h2');
     if (score === 10) {
         finalMessageEl.textContent = "You're too good for this quiz."
     } else if (score >= 8) {
@@ -92,7 +91,6 @@ const finalMessage = () => {
     quizContainer.appendChild(finalMessageEl);
 }
 
-
-resetButtonEl.addEventListener('click', init);
-
-animeButtonEl.addEventListener('click', render);
+document.addEventListener('DOMContentLoaded', home)
+resetButtonEl.addEventListener('click', home);
+buttonContainerEl.addEventListener('click', startQuiz);

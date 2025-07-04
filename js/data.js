@@ -1,51 +1,61 @@
 export const animeQuestions = [
     {
-        image: "./images/image1.png",
+        image: "./images/animeImages/image1.png",
+        question: "Can you guess this one? I was obsessed with it years ago",
         choices: ["Another", "Monogatari", "Steins;Gate", "Fate/stay night"],
         answer: "Steins;Gate"
     },
     {
-        image: "./images/image2.png",
+        image: "./images/animeImages/image2.png",
+        question: "How about this one? This scene was particularly horrifying",
         choices: ["Berserk", "FullMetal Alchemist: Brotherhood", "Erased", "Soul Eater"],
         answer: "FullMetal Alchemist: Brotherhood"
     },
     {
-        image: "./images/image3.png",
+        image: "./images/animeImages/image3.png",
+        question: "Hmm, what's that in the distance there? Where could they possibly be from?",
         choices: ["Attack on Titan", "My Hero Academia", "Ranking of Kings", "Dragon Ball"],
         answer: "Attack on Titan"
     },
     {
-        image: "./images/image4.png",
+        image: "./images/animeImages/image4.png",
+        question: "He looks pretty angry. Which one is he from?",
         choices: ["Trigun", "Rurouni Kenshin", "Yu Yu Hakusho", "Cowboy Bebop"],
         answer: "Cowboy Bebop"
     },
     {
-        image: "./images/image5.png",
+        image: "./images/animeImages/image5.png",
+        question: "Kind of an overrated anime in my opinion, but this scene was particularly beautiful",
         choices: ["Fate/Zero", "Demon Slayer", "My Hero Academia", "Jujutsu Kaisen"],
         answer: "Demon Slayer"
     },
     {
-        image: "./images/image6.png",
+        image: "./images/animeImages/image6.png",
+        question: "Which anime is this one? It was quite a thriller",
         choices: ["Code Geass", "Death Note", "Psycho Pass", "Monster"],
         answer: "Death Note"
     },
     {
-        image: "./images/image7.png",
-        choices: ["Code Geass","Mobile Suit Gundam Wing","Neon Genesis Evangelion","Mobile Fighter G Gundam"],
+        image: "./images/animeImages/image7.png",
+        question: "This one looks like some kind of mecha anime. Which one could it be?",
+        choices: ["Code Geass", "Mobile Suit Gundam Wing", "Neon Genesis Evangelion", "Mobile Fighter G Gundam"],
         answer: "Neon Genesis Evangelion"
     },
     {
-        image: "./images/image8.png",
+        image: "./images/animeImages/image8.png",
+        question: "This one's slightly hard, but there's a pretty good clue in it",
         choices: ["Your Name", "A Silent Voice", "Weathering With You", "5 Centimeters per Second"],
         answer: "Your Name"
     },
     {
-        image: "./images/image9.png",
+        image: "./images/animeImages/image9.png",
+        question: "Studio Ghibli has been known to make great fantasy movies",
         choices: ["Grave of the Fireflies", "Kiki's Delivery Service", "Spirited Away", "My Neighbor Totoro"],
         answer: "Spirited Away"
     },
     {
-        image: "./images/image10.png",
+        image: "./images/animeImages/image10.png",
+        question: "And the last one. Can you guess this movie?",
         choices: ["Mobile Suit Gundam: Char's Counterattack", "Howl's Moving Castle", "Ghost in the Shell", "Akira"],
         answer: "Akira"
     },
@@ -54,9 +64,9 @@ export const animeQuestions = [
 export const disneyQuestions = [
     {
         image: "",
-        question: "",
-        choices: [],
-        answer: "",
+        question: "What follows the line",
+        choices: ["Answer", "B", "C", "D"],
+        answer: "Answer",
     },
     {
         image: "",

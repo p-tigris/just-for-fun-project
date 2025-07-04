@@ -1,11 +1,13 @@
 // Home page elements
 export const animeImageEl = document.createElement('img');
-animeImageEl.src = "./images/anime-image.jpg";
+animeImageEl.src = "./images/mainImages/animeCoverImage.jpg";
+animeImageEl.alt = "Anime Cover Image";
 animeImageEl.height = 200;
 animeImageEl.width = 300;
 
 export const disneyImageEl = document.createElement('img');
-disneyImageEl.src = "./images/disney-image.jpg";
+disneyImageEl.src = "./images/mainImages/disneyCoverImage.jpg";
+disneyImageEl.alt = "Disney Cover Image";
 disneyImageEl.height = 200;
 disneyImageEl.width = 300;
 
@@ -26,12 +28,12 @@ buttonContainerEl.style.marginTop = "1em";
 
 // Image for each quiz question
 export const quizImageEl = document.createElement('img');
-quizImageEl.alt = "Quiz image";
+quizImageEl.alt = "Quiz Image";
 quizImageEl.height = 400;
-quizImageEl.width = 500;
+quizImageEl.width = 600;
 quizImageEl.style.display = "flex";
 
-// Choice buttons for each quiz question
+// Choice buttons container for each quiz question
 export const choiceButtonsEl = document.createElement('div');
 choiceButtonsEl.style.display = "grid";
 choiceButtonsEl.style.justifyContent = "center";
@@ -45,4 +47,4 @@ export const finalMessageEl = document.createElement('h2');
 
 // Reset button for end of quiz
 export const resetButtonEl = document.createElement('button');
-resetButtonEl.textContent = "Return to Home Page";
+resetButtonEl.textContent = "Return Home";

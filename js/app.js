@@ -1,16 +1,20 @@
+/*-------------------------------- Constants --------------------------------*/
 import { animeQuestions, disneyQuestions } from "./data.js";
 import { animeImageEl, animeButtonEl, disneyImageEl, disneyButtonEl, 
-    imageContainerEl, buttonContainerEl, quizImageEl, choiceButtonsEl, 
+    imageContainerEl, buttonContainerEl, quizImageEl, choiceButtonsEl,
     finalMessageEl, resetButtonEl } from "./setup.js";
 
+/*---------------------------- Variables (state) ----------------------------*/
 let score;
 let currentQuestionIndex;
 let quizQuestions;
 
+/*------------------------ Cached Element References ------------------------*/
 const quizContainer = document.querySelector('#quiz-container');
 const messageEl = document.querySelector('#message');
 
-
+/*-------------------------------- Functions --------------------------------*/
+// Initiates the starting view of the app
 const home = () => {
     score = 0;
     currentQuestionIndex = 0;
@@ -24,6 +28,7 @@ const home = () => {
     buttonContainerEl.appendChild(disneyButtonEl);
 }
 
+// Starts the quiz depending on which quiz button is clicked
 const startQuiz = (event) => {
     if (event.target.textContent === "Guess the Anime") {
         quizQuestions = animeQuestions;
@@ -32,7 +37,8 @@ const startQuiz = (event) => {
     }
     render();
 }
-    
+
+// Creates a view of a quiz question, an image and four choices
 const render = () => {
     messageEl.textContent = quizQuestions[currentQuestionIndex].question;
     quizContainer.innerHTML = "";
@@ -48,17 +54,24 @@ const render = () => {
     })
 }
 
+// Checks to see if the user's choice is correct, and updates score accordingly
 const checkAnswer = (event) => {
     quizContainer.innerHTML = "";
     if (event.target.textContent === quizQuestions[currentQuestionIndex].answer) {
         messageEl.textContent = "✅ That is correct!";
+        quizImageEl.src = "./images/mainImages/rightAnswer.png";
         score++;
     } else {
         messageEl.textContent = "❌ Sorry, that is incorrect."
+        quizImageEl.src = "./images/mainImages/wrongAnswer.png";
     }
+    quizContainer.appendChild(quizImageEl);
     next();
 }
 
+// Creates a "Next" button to move on to the next question after the result of the previous
+// Gives the final score at the end of the quiz
+// Provides a reset button to return to the beginning of the app
 const next = () => {
     const nextButtonEl = document.createElement('button');
     nextButtonEl.textContent = "Next"
@@ -69,28 +82,35 @@ const next = () => {
         if (currentQuestionIndex < quizQuestions.length) {
             render();
         } else {
-            messageEl.textContent = `Your final score is ${score} out of ${animeQuestions.length}`;
+            messageEl.textContent = `Your final score is ${score} out of ${quizQuestions.length}`;
             finalMessage();
             quizContainer.appendChild(resetButtonEl);
         }
     })
 }
 
+// Gives one final message based on the user's final score
 const finalMessage = () => {
     if (score === 10) {
-        finalMessageEl.textContent = "You're too good for this quiz."
+        finalMessageEl.textContent = "You're too good for this quiz.";
+        quizImageEl.src = "./images/mainImages/perfectScore.png";
     } else if (score >= 8) {
-        finalMessageEl.textContent = "You really know your stuff!"
+        finalMessageEl.textContent = "You really know your stuff!";
+        quizImageEl.src = "./images/mainImages/veryGoodScore.png";
     } else if (score >= 5) {
-        finalMessageEl.textContent = "Not bad, but it's hard to believe you missed some of these"
+        finalMessageEl.textContent = "Not bad, but it's hard to believe you missed some of these.";
+        quizImageEl.src = "./images/mainImages/okayScore.png";
     } else if (score >= 3) {
-        finalMessageEl.textContent = "Are you sure you're a fan?"
+        finalMessageEl.textContent = "Are you sure you're a fan?";
+        quizImageEl.src = "./images/mainImages/mediocreScore.png";
     } else {
-        finalMessageEl.textContent = "Well... you tried."
+        finalMessageEl.textContent = "Well... you tried.";
+        quizImageEl.src = "./images/mainImages/poorScore.png";
     }
     quizContainer.appendChild(finalMessageEl);
 }
 
+/*----------------------------- Event Listeners -----------------------------*/
 document.addEventListener('DOMContentLoaded', home)
 resetButtonEl.addEventListener('click', home);
 buttonContainerEl.addEventListener('click', startQuiz);

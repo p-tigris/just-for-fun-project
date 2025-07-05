@@ -1,8 +1,9 @@
 /*-------------------------------- Constants --------------------------------*/
 import { animeQuestions, disneyQuestions } from "./data.js";
 import { animeImageEl, animeButtonEl, disneyImageEl, disneyButtonEl, 
-    imageContainerEl, buttonContainerEl, quizImageEl, choiceButtonsEl,
-    finalMessageEl, resetButtonEl } from "./setup.js";
+    buttonStyle, imageStyles, imageContainerEl, buttonContainerEl, quizImageEl,
+    choiceButtonsEl, finalMessageEl, resetButtonEl, 
+    removeBorder} from "./setup.js";
 
 /*---------------------------- Variables (state) ----------------------------*/
 let score;
@@ -12,10 +13,12 @@ let quizQuestions;
 /*------------------------ Cached Element References ------------------------*/
 const quizContainer = document.querySelector('#quiz-container');
 const messageEl = document.querySelector('#message');
+const titleEl = document.querySelector('#title');
 
 /*-------------------------------- Functions --------------------------------*/
 // Initiates the starting view of the app
 const home = () => {
+    window.scrollTo(0, 0);
     score = 0;
     currentQuestionIndex = 0;
     quizContainer.innerHTML = "";
@@ -30,6 +33,9 @@ const home = () => {
 
 // Starts the quiz depending on which quiz button is clicked
 const startQuiz = (event) => {
+    if (!event.target.classList.contains("quiz")) {
+        return;
+    }
     if (event.target.textContent === "Guess the Anime") {
         quizQuestions = animeQuestions;
     } else if (event.target.textContent === "Guess the Disney Lyrics") {
@@ -40,8 +46,10 @@ const startQuiz = (event) => {
 
 // Creates a view of a quiz question, an image and four choices
 const render = () => {
+    window.scrollTo(0, 0);
     messageEl.textContent = quizQuestions[currentQuestionIndex].question;
     quizContainer.innerHTML = "";
+    imageStyles(quizImageEl);
     quizImageEl.src = quizQuestions[currentQuestionIndex].image;
     quizContainer.appendChild(quizImageEl);
     choiceButtonsEl.innerHTML = "";
@@ -49,6 +57,8 @@ const render = () => {
     quizQuestions[currentQuestionIndex].choices.forEach((choice) => {
         const choiceButton = document.createElement('button');
         choiceButton.textContent = choice;
+        choiceButton.classList.add("choice")
+        buttonStyle(choiceButton, 24, 'Vollkorn');
         choiceButtonsEl.appendChild(choiceButton);
         choiceButtonsEl.addEventListener('click', checkAnswer)
     })
@@ -56,7 +66,12 @@ const render = () => {
 
 // Checks to see if the user's choice is correct, and updates score accordingly
 const checkAnswer = (event) => {
+    if (!event.target.classList.contains("choice")) {
+        return;
+    }
     quizContainer.innerHTML = "";
+    window.scrollTo(0, 0);
+    removeBorder(quizImageEl);
     if (event.target.textContent === quizQuestions[currentQuestionIndex].answer) {
         messageEl.textContent = "✅ That is correct!";
         quizImageEl.src = "./images/mainImages/rightAnswer.png";
@@ -74,14 +89,18 @@ const checkAnswer = (event) => {
 // Provides a reset button to return to the beginning of the app
 const next = () => {
     const nextButtonEl = document.createElement('button');
-    nextButtonEl.textContent = "Next"
-    quizContainer.appendChild(nextButtonEl)
+    nextButtonEl.style.display = "block";
+    nextButtonEl.style.margin = "20px auto";
+    nextButtonEl.textContent = "Next";
+    buttonStyle(nextButtonEl, 48, 'Ceviche One');
+    quizContainer.appendChild(nextButtonEl);
     nextButtonEl.addEventListener('click', () => {
         currentQuestionIndex++;
-        nextButtonEl.remove();
         if (currentQuestionIndex < quizQuestions.length) {
             render();
         } else {
+            nextButtonEl.remove();
+            window.scrollTo(0, 0);
             messageEl.textContent = `Your final score is ${score} out of ${quizQuestions.length}`;
             finalMessage();
             quizContainer.appendChild(resetButtonEl);
@@ -112,5 +131,6 @@ const finalMessage = () => {
 
 /*----------------------------- Event Listeners -----------------------------*/
 document.addEventListener('DOMContentLoaded', home)
+titleEl.addEventListener('click', home);
 resetButtonEl.addEventListener('click', home);
 buttonContainerEl.addEventListener('click', startQuiz);

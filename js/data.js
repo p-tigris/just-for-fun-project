@@ -71,8 +71,8 @@ export const disneyQuestions = [
     {
         image: "./images/disneyImages/image2.png",
         question: "Circle of Life — Fill in the blank: 'From the day we arrived on the planet, and, blinking, step into the ____'",
-        choices: ["World", "Sky", "Land", "Sun"],
-        answer: "Sun",
+        choices: ["world", "sky", "land", "sun"],
+        answer: "sun",
     },
     {
         image: "./images/disneyImages/image3.png",
@@ -83,8 +83,8 @@ export const disneyQuestions = [
     {
         image: "./images/disneyImages/image4.png",
         question: "Beauty and the Beast — Fill in the blank: 'Tale as old as time, song as old as ______'",
-        choices: ["Rhyme", "Time", "Crime", "Grime"],
-        answer: "Rhyme",
+        choices: ["rhyme", "time", "crime", "grime"],
+        answer: "rhyme",
     },
     {
         image: "./images/disneyImages/image5.png",
@@ -101,8 +101,8 @@ export const disneyQuestions = [
     {
         image: "./images/disneyImages/image7.png",
         question: "A Dream Is a Wish Your Heart Makes — Fill in the blank: In dreams, you will lose your _______",
-        choices: ["Heartaches", "Problems", "Sorrows", "Anguish"],
-        answer: "Heartaches",
+        choices: ["heartaches", "problems", "sorrows", "anguish"],
+        answer: "heartaches",
     },
     {
         image: "./images/disneyImages/image8.png",
@@ -119,7 +119,7 @@ export const disneyQuestions = [
     {
         image: "./images/disneyImages/image10.png",
         question: "Let It Go — Fill in the blank: 'Don't let them in, don't let them see. Be the ________ you always have to be.'",
-        choices: ["perfect girl", "good girl", "queen", "princess"],
+        choices: ["perfect girl", "princess", "queen", "good girl"],
         answer: "good girl",
     }
 ]

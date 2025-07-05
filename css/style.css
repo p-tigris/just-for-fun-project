@@ -1,10 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Ceviche+One&family=Courgette&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Vollkorn:ital,wght@0,400..900;1,400..900&display=swap");
+
+html {
+    height: 100%;
+}
+
 body {
+    background: radial-gradient(circle, #103783 0%, #439cfb 50%, #000000 100%);
+    padding-bottom: 100px;
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-h1 {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+#title {
+    font-family: 'Lobster Two', Arial, sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+    padding: 10px;
+    border-style: dashed;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#message {
+    font-family: 'Courgette', Arial, sans-serif;
+    color: #ffffff;
+    text-align: center;
 }

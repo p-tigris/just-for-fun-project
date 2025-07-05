@@ -94,13 +94,13 @@ export const disneyQuestions = [
     },
     {
         image: "./images/disneyImages/image6.png",
-        question: "Strangers Like Me — Next line after: 'I can see there's so much to learn...",
-        choices: ["Show me everything and tell me how", "It's all so close and yet so far", "Of some other world far beyond this place", "I wanna know, can you show me?"],
-        answer: "It's all so close and yet so far",
+        question: "Strangers Like Me — Line that comes before: 'Something's familiar about these strangers like me'",
+        choices: ["Show me everything and tell me how", "Tell me more, please show me", "Beyond the trees, above the clouds", "I wanna know, can you show me?"],
+        answer: "Tell me more, please show me",
     },
     {
         image: "./images/disneyImages/image7.png",
-        question: "A Dream Is a Wish Your Heart Makes — Fill in the blank: In dreams, you will lose your _______",
+        question: "A Dream Is a Wish Your Heart Makes — Fill in the blank: 'In dreams, you will lose your _______'",
         choices: ["heartaches", "problems", "sorrows", "anguish"],
         answer: "heartaches",
     },

@@ -34,7 +34,7 @@ const home = () => {
 // Starts the quiz depending on which quiz button is clicked
 const startQuiz = (event) => {
     if (!event.target.classList.contains("quiz")) {
-        return;
+        return; // Ensures only buttons are clicked
     }
     if (event.target.textContent === "Guess the Anime") {
         quizQuestions = animeQuestions;
@@ -67,7 +67,7 @@ const render = () => {
 // Checks to see if the user's choice is correct, and updates score accordingly
 const checkAnswer = (event) => {
     if (!event.target.classList.contains("choice")) {
-        return;
+        return; // Ensures only buttons are clicked
     }
     quizContainer.innerHTML = "";
     window.scrollTo(0, 0);

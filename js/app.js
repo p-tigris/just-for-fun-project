@@ -44,7 +44,7 @@ const startQuiz = (event) => {
     render();
 }
 
-// Creates a view of a quiz question, an image and four choices
+// Creates a view of a quiz question, an image and choices
 const render = () => {
     window.scrollTo(0, 0);
     messageEl.textContent = quizQuestions[currentQuestionIndex].question;
@@ -54,6 +54,7 @@ const render = () => {
     quizContainer.appendChild(quizImageEl);
     choiceButtonsEl.innerHTML = "";
     quizContainer.appendChild(choiceButtonsEl);
+
     quizQuestions[currentQuestionIndex].choices.forEach((choice) => {
         const choiceButton = document.createElement('button');
         choiceButton.textContent = choice;

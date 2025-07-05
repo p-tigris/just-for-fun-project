@@ -57,10 +57,10 @@ const render = () => {
     quizQuestions[currentQuestionIndex].choices.forEach((choice) => {
         const choiceButton = document.createElement('button');
         choiceButton.textContent = choice;
-        choiceButton.classList.add("choice")
+        choiceButton.classList.add("choice");
         buttonStyle(choiceButton, 24, 'Vollkorn');
         choiceButtonsEl.appendChild(choiceButton);
-        choiceButtonsEl.addEventListener('click', checkAnswer)
+        choiceButtonsEl.addEventListener('click', checkAnswer);
     })
 }
 
@@ -130,7 +130,7 @@ const finalMessage = () => {
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
-document.addEventListener('DOMContentLoaded', home)
+document.addEventListener('DOMContentLoaded', home);
 titleEl.addEventListener('click', home);
 resetButtonEl.addEventListener('click', home);
 buttonContainerEl.addEventListener('click', startQuiz);

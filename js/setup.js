@@ -24,11 +24,11 @@ imageStyles(disneyImageEl);
 
 export const animeButtonEl = document.createElement('button');
 animeButtonEl.textContent = "Guess the Anime";
-animeButtonEl.classList.add('quiz')
+animeButtonEl.classList.add('quiz');
 
 export const disneyButtonEl = document.createElement('button');
 disneyButtonEl.textContent = "Guess the Disney Lyrics";
-disneyButtonEl.classList.add('quiz')
+disneyButtonEl.classList.add('quiz');
 
 // Function for styling buttons
 export const buttonStyle = (button, fontSize, font) => {
